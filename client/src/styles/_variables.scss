@@ -1,0 +1,20 @@
+$primary-color: #b08968;
+$secondary-color: #7f5539;
+$light-brown: #ede0d4;
+$dark-brown: #432818;
+
+@mixin btn {
+  text-decoration: none;
+  background-color: $secondary-color;
+  border: 2px solid $secondary-color;
+  color: $light-brown;
+  font-size: 1.25rem;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $light-brown;
+    color: $dark-brown;
+  }
+}
