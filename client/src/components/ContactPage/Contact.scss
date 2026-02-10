@@ -1,0 +1,103 @@
+@use '../../styles/variables' as vars;
+
+.contact {
+  min-height: 100vh;
+}
+
+.contact-sec {
+  background-color: vars.$light-brown;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 375px;
+  border-radius: 10px;
+  margin: 0 auto;
+
+  &__title {
+    color: vars.$dark-brown;
+    font-size: 2rem;
+  }
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &__label {
+    color: vars.$dark-brown;
+    font-size: 1.25rem;
+
+    &--required:after {
+      content: " *";
+      color: firebrick;
+    }
+  }
+  
+  &__submit-btn {
+    @include vars.btn;
+    width: 100%;
+    margin: 20px 0;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  input,
+  textarea {
+    @include vars.input-box;
+    margin: 0 0 15px 0;
+  }
+
+  textarea {
+    height: 100px;
+    margin: 0;
+  }
+
+  #character-output {
+    font-size: 0.9rem;
+    margin: 3px;
+  }
+
+  .error-message {
+    margin: 10px 0 0;
+    color: firebrick;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #hamburger-icon {
+    display: none;
+  }
+
+  .nav--desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header {
+    &__product-btn,
+    &__home-btn {
+      @include vars.btn;
+      margin: 0 5px;
+    }
+  }
+
+  // main {
+  //   margin: 30px;
+  // }
+
+  .contact-sec {
+    max-width: 500px;
+    padding: 20px 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  // main {
+  //   height: 80vh;
+  // }
+
+  .contact-sec {
+    max-width: 600px;
+  }
+}
