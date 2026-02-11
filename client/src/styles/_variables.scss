@@ -20,6 +20,7 @@ $dark-brown: #432818;
 }
 
 @mixin input-box {
+  font-family: 'Courier New', Courier, monospace;
   border: none;
   border-radius: 10px;
   padding: 8px;

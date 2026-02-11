@@ -6,3 +6,7 @@ body {
   flex-direction: column;
   box-sizing: border-box;
 }
+
+html, body, #root {
+  height: 100%;
+}

@@ -1,9 +1,5 @@
 @use '../../styles/variables' as vars;
 
-// .contact {
-//   // min-height: 80vh;
-// }
-
 .contact-intro,
 .response-msg {
   text-align: center;
@@ -57,7 +53,6 @@
   select {
     @include vars.input-box;
     margin: 0 0 15px 0;
-    // min-width: 316px;
   }
 
   textarea {
@@ -77,27 +72,15 @@
 }
 
 @media screen and (min-width: 768px) {
-  // #hamburger-icon {
-  //   display: none;
-  // }
+  .contact-intro,
+  .response-msg {
+    max-width: 500px;
+    margin: 0 auto;
 
-  // .nav--desktop {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   align-items: center;
-  // }
-
-  // .header {
-  //   &__product-btn,
-  //   &__home-btn {
-  //     @include vars.btn;
-  //     margin: 0 5px;
-  //   }
-  // }
-
-  // main {
-  //   margin: 30px;
-  // }
+    &__txt {
+      font-size: 1.2rem;
+    }
+  }
 
   .contact-sec {
     max-width: 500px;
@@ -106,10 +89,6 @@
 }
 
 @media screen and (min-width: 1024px) {
-  // main {
-  //   height: 80vh;
-  // }
-
   .contact-sec {
     max-width: 600px;
   }

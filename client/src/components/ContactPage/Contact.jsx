@@ -17,13 +17,10 @@ function Contact() {
       <section className='contact-sec'>
         <h1 className='contact-sec__title'>Contact Us</h1>
         <form className='contact-form' id='contact-form' method='post'>
-          <label for='name' className='contact-form__label contact-form__label--required'>Name</label>
+          <label htmlFor='name' className='contact-form__label contact-form__label--required'>Name</label>
           <input type='text' name='name' id='name' required/>
 
-          {/* <label for='last-name' className='contact-form__label contact-form__label--required'>Last Name</label>
-          <input type='text' name='last-name' id='last-name' required/> */}
-
-          <label for='reason' className='contact-form__label contact-form__label--required'>Reason</label>
+          <label htmlFor='reason' className='contact-form__label contact-form__label--required'>Reason</label>
           <select name='reason' id='reason'>
             <option value={''}>Select</option>
             <option value={'order-questions'}>Order Questions</option>
@@ -33,19 +30,18 @@ function Contact() {
             <option value={'other'}>Other</option>
           </select>
 
-          <label for='email' className='contact-form__label contact-form__label--required'>Email</label>
+          <label htmlFor='email' className='contact-form__label contact-form__label--required'>Email</label>
           <input type='email' name='email' id='email'
             placeholder='example@email.com'
             pattern='[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$'
             title='Please input a valid email address. Example: name@email.com'
             required />
 
-          <label for='comment-box' className='contact-form__label contact-form__label--required'>Comments</label>
-          <textarea name='comments' maxlength='500' placeholder='Tell us what’s on your mind. (max 500 characters)' id='comment-box'></textarea>
+          <label htmlFor='comment-box' className='contact-form__label contact-form__label--required'>Comments</label>
+          <textarea name='comments' maxLength='500' placeholder='Tell us what’s on your mind. (max 500 characters)' id='comment-box'></textarea>
           <p id='character-output'></p>
 
           <p className='error-message'></p>
-          {/* <button className='submit-btn contact-form__submit-btn' type='submit' id='submit-btn'>Contact the crumb council</button> */}
           <button className='submit-btn contact-form__submit-btn' type='submit' id='submit-btn'>Submit</button>
         </form>
       </section>
