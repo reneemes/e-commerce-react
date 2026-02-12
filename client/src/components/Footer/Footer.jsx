@@ -12,7 +12,7 @@ function Footer() {
       </div>
       <p className="footer__trademark">Copyright © 2025 Bagel Bites. All rights reserved.</p>
       <p className="footer__disclosure">
-        Bagel Bites is a student project for educational purposes and is not a
+        Bagel Bites is a project for educational purposes and is not a
         real store.
       </p>
     </footer>

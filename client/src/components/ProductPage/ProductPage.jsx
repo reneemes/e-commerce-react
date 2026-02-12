@@ -1,9 +1,37 @@
 import './ProductPage.scss';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import ProductCard from '../ProductCard/ProductCard';
 
 function ProductPage() {
+  const [products, setProducts] = useState([]);
   const [category, setCategory] = useState("all");
-  const [maxPrice, setMaxPrice] = useState(20);
+  const [maxPrice, setMaxPrice] = useState(10);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('/api/v1/products');
+        const data = await response.json();
+        setProducts(data.products);
+      } catch (e) {
+        console.error('Error fetching products: ', e);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  const filteredProducts = products.filter(product => {
+    const matchesType =
+      category === "all" || product.type === category;
+    
+    const matchesPrice =
+      product.price <= maxPrice;
+
+    return matchesType && matchesPrice;
+  });
+
+  console.log('filteredProducts: ', filteredProducts)
 
   return (
     <div className='product-page'>
@@ -14,7 +42,7 @@ function ProductPage() {
           <input
             type="range"
             min="0"
-            max="20"
+            max="10"
             value={maxPrice}
             onChange={(e) => setMaxPrice(Number(e.target.value))}
           />
@@ -22,6 +50,7 @@ function ProductPage() {
 
         <div>
           <p>Product Type:</p>
+
           <label>
             <input
               type="checkbox"
@@ -35,8 +64,8 @@ function ProductPage() {
           <label>
             <input
               type="checkbox"
-              value="bagel-bites"
-              checked={category === "bagel-bites"}
+              value="bites"
+              checked={category === "bites"}
               onChange={(e) => setCategory(e.target.value)}
             />
             Bites
@@ -45,8 +74,8 @@ function ProductPage() {
           <label>
             <input
               type="checkbox"
-              value="bagels"
-              checked={category === "bagels"}
+              value="bagel"
+              checked={category === "bagel"}
               onChange={(e) => setCategory(e.target.value)}
             />
             Bagels
@@ -55,8 +84,8 @@ function ProductPage() {
           <label>
             <input
               type="checkbox"
-              value="sandwiches"
-              checked={category === "sandwiches"}
+              value="sandwich"
+              checked={category === "sandwich"}
               onChange={(e) => setCategory(e.target.value)}
             />
             Sandwiches
@@ -65,15 +94,31 @@ function ProductPage() {
           <label>
             <input
               type="checkbox"
-              value="spreads"
-              checked={category === "spreads"}
+              value="spread"
+              checked={category === "spread"}
               onChange={(e) => setCategory(e.target.value)}
             />
             Spreads
           </label>
         </div>
       </div>
-      <section className='product-page__product-sec'></section>
+      <section className="product-page__product-sec">
+        {
+          filteredProducts.map(product => {
+            return (
+              <ProductCard 
+                key={product.id}
+                id={product.id}
+                type={product.type}
+                img={product.img_url}
+                name={product.name}
+                price={product.price}
+                description={product.description}
+              />
+            )
+          })
+        }
+      </section>
     </div>
   )
 }

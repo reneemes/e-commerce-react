@@ -12,7 +12,16 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/products', productRoutes);
+app.use('/api/v1/products', productRoutes);
+
+// Error handling
+app.use((err, req, res, next) => {
+  console.error(err);
+
+  res.status(500).json({
+    message: "Something went wrong",
+  });
+});
 
 //Server
 app.listen(port, () => {
