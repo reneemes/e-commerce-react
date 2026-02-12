@@ -31,14 +31,12 @@ function ProductPage() {
     return matchesType && matchesPrice;
   });
 
-  console.log('filteredProducts: ', filteredProducts)
-
   return (
     <div className='product-page'>
       <h1 className='product-page__title'>Shop Bagels</h1>
       <div className='product-page__filters'>
         <label>
-          Max Price: ${maxPrice}
+          <span className='product-page__filters--title'>Max Price:</span> ${maxPrice}
           <input
             type="range"
             min="0"
@@ -48,58 +46,59 @@ function ProductPage() {
           />
         </label>
 
-        <div>
-          <p>Product Type:</p>
+        <div className='product-page__filters--types'>
+          <fieldset>
+            <legend className='product-page__filters--title'>Product Type:</legend>
+            <label>
+              <input
+                type="checkbox"
+                value="all"
+                checked={category === "all"}
+                onChange={(e) => setCategory(e.target.value)}
+              />
+              All
+            </label>
 
-          <label>
-            <input
-              type="checkbox"
-              value="all"
-              checked={category === "all"}
-              onChange={(e) => setCategory(e.target.value)}
-            />
-            All
-          </label>
+            <label>
+              <input
+                type="checkbox"
+                value="bites"
+                checked={category === "bites"}
+                onChange={(e) => setCategory(e.target.value)}
+              />
+              Bites
+            </label>
 
-          <label>
-            <input
-              type="checkbox"
-              value="bites"
-              checked={category === "bites"}
-              onChange={(e) => setCategory(e.target.value)}
-            />
-            Bites
-          </label>
+            <label>
+              <input
+                type="checkbox"
+                value="bagel"
+                checked={category === "bagel"}
+                onChange={(e) => setCategory(e.target.value)}
+              />
+              Bagels
+            </label>
 
-          <label>
-            <input
-              type="checkbox"
-              value="bagel"
-              checked={category === "bagel"}
-              onChange={(e) => setCategory(e.target.value)}
-            />
-            Bagels
-          </label>
+            <label>
+              <input
+                type="checkbox"
+                value="sandwich"
+                checked={category === "sandwich"}
+                onChange={(e) => setCategory(e.target.value)}
+              />
+              Sandwiches
+            </label>
 
-          <label>
-            <input
-              type="checkbox"
-              value="sandwich"
-              checked={category === "sandwich"}
-              onChange={(e) => setCategory(e.target.value)}
-            />
-            Sandwiches
-          </label>
-
-          <label>
-            <input
-              type="checkbox"
-              value="spread"
-              checked={category === "spread"}
-              onChange={(e) => setCategory(e.target.value)}
-            />
-            Spreads
-          </label>
+            <label>
+              <input
+                type="checkbox"
+                value="spread"
+                checked={category === "spread"}
+                onChange={(e) => setCategory(e.target.value)}
+              />
+              Spreads
+            </label>
+          </fieldset>
         </div>
       </div>
       <section className="product-page__product-sec">
