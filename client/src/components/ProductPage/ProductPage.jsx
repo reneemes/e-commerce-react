@@ -1,5 +1,5 @@
 import './ProductPage.scss';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import ProductCard from '../ProductCard/ProductCard';
 
 function ProductPage() {
@@ -35,19 +35,28 @@ function ProductPage() {
     })
   }
 
-  const filteredProducts = products.filter(product => {
-    const matchesType =
-      categories.length === 0 || categories.includes(product.type);
-    
-    const matchesPrice =
-      product.price <= maxPrice;
+  const filteredProducts = useMemo(() => {
 
-    return matchesType && matchesPrice;
-  });
+    return products.filter(product => {
+      const matchesType =
+        categories.length === 0 || categories.includes(product.type);
+      
+      const matchesPrice =
+        product.price <= maxPrice;
+      
+      return matchesType && matchesPrice;
+    });
+  }, [products, categories, maxPrice]);
 
   const clearFilters = () => {
     setCategories([]);
     setMaxPrice(10);
+  }
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      e.currentTarget.click();
+    }
   }
 
   return (
@@ -68,15 +77,6 @@ function ProductPage() {
         <div className='product-page__filters--types'>
           <fieldset>
             <legend className='product-page__filters--title'>Product Type:</legend>
-            {/* <label>
-              <input
-                type="checkbox"
-                value="all"
-                checked={categories.length === 0}
-                onChange={(e) => setCategories(e.target.value)}
-              />
-              All
-            </label> */}
 
             <label>
               <input
@@ -84,6 +84,7 @@ function ProductPage() {
                 value="bites"
                 checked={categories.includes("bites")}
                 onChange={(e) => handleCategoryChange(e.target.value)}
+                onKeyDown={handleKeyPress}
               />
               Bites
             </label>
@@ -94,6 +95,7 @@ function ProductPage() {
                 value="bagel"
                 checked={categories.includes("bagel")}
                 onChange={(e) => handleCategoryChange(e.target.value)}
+                onKeyDown={handleKeyPress}
               />
               Bagels
             </label>
@@ -104,6 +106,7 @@ function ProductPage() {
                 value="sandwich"
                 checked={categories.includes("sandwich")}
                 onChange={(e) => handleCategoryChange(e.target.value)}
+                onKeyDown={handleKeyPress}
               />
               Sandwiches
             </label>
@@ -114,12 +117,13 @@ function ProductPage() {
                 value="spread"
                 checked={categories.includes("spread")}
                 onChange={(e) => handleCategoryChange(e.target.value)}
+                onKeyDown={handleKeyPress}
               />
               Spreads
             </label>
           </fieldset>
 
-          <button className="product-page__filters--clear" onClick={clearFilters}>Clear Filters</button>
+          <button className="product-page__filters--clear" onClick={clearFilters} onKeyDown={handleKeyPress}>Clear Filters</button>
 
         </div>
       </div>
