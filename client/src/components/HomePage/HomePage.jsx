@@ -1,11 +1,12 @@
 import './HomePage.scss';
+import { Link } from 'react-router-dom';
 
 function HomePage() {
 
   return (
     <div className="main-body">
       <section className="main-body__hero">
-        <img className="main-body__hero--img" src="https://www.kingarthurbaking.com/sites/default/files/styles/featured_image_2x/public/2025-04/Chewy-Everything-Bagels_Shot_4_027.jpg?itok=brHI0RTZ" alt="Bagels"/>
+        <img className="main-body__hero--img" src="/assets/bagel-hero.jpg" alt="Bagels"/>
         <div className="main-body__hero--txt">
           <p>Bagel Bites</p>
         </div>
@@ -22,8 +23,8 @@ function HomePage() {
         </p>
       </section>
       <section className="main-links">
-        <a className="main-links__btn" href="product-page/products.html">Shop Bagels</a>
-        <a className="main-links__btn" href="contact-page/contact.html">Contact Us</a>
+        <Link className="main-links__btn" to={'/shop'}>Shop Bagels</Link>
+        <Link className="main-links__btn" to={'/contact'}>Contact Us</Link>
       </section>
     </div>
   )

@@ -4,7 +4,7 @@ import ProductCard from '../ProductCard/ProductCard';
 
 function ProductPage() {
   const [products, setProducts] = useState([]);
-  const [category, setCategory] = useState("all");
+  const [categories, setCategories] = useState([]);
   const [maxPrice, setMaxPrice] = useState(10);
 
   useEffect(() => {
@@ -21,9 +21,23 @@ function ProductPage() {
     fetchProducts();
   }, []);
 
+  const handleCategoryChange = (value) => {
+    setCategories((prev) => {
+      if (value === 'all') {
+        return [];
+      }
+
+      if (prev.includes(value)) {
+        return prev.filter((c) => c !== value);
+      } else {
+        return [...prev, value];
+      }
+    })
+  }
+
   const filteredProducts = products.filter(product => {
     const matchesType =
-      category === "all" || product.type === category;
+      categories.length === 0 || categories.includes(product.type);
     
     const matchesPrice =
       product.price <= maxPrice;
@@ -31,11 +45,16 @@ function ProductPage() {
     return matchesType && matchesPrice;
   });
 
+  const clearFilters = () => {
+    setCategories([]);
+    setMaxPrice(10);
+  }
+
   return (
     <div className='product-page'>
       <h1 className='product-page__title'>Shop Bagels</h1>
       <div className='product-page__filters'>
-        <label>
+        <label className='product-page__filters--slider'>
           <span className='product-page__filters--title'>Max Price:</span> ${maxPrice}
           <input
             type="range"
@@ -49,22 +68,22 @@ function ProductPage() {
         <div className='product-page__filters--types'>
           <fieldset>
             <legend className='product-page__filters--title'>Product Type:</legend>
-            <label>
+            {/* <label>
               <input
                 type="checkbox"
                 value="all"
-                checked={category === "all"}
-                onChange={(e) => setCategory(e.target.value)}
+                checked={categories.length === 0}
+                onChange={(e) => setCategories(e.target.value)}
               />
               All
-            </label>
+            </label> */}
 
             <label>
               <input
                 type="checkbox"
                 value="bites"
-                checked={category === "bites"}
-                onChange={(e) => setCategory(e.target.value)}
+                checked={categories.includes("bites")}
+                onChange={(e) => handleCategoryChange(e.target.value)}
               />
               Bites
             </label>
@@ -73,8 +92,8 @@ function ProductPage() {
               <input
                 type="checkbox"
                 value="bagel"
-                checked={category === "bagel"}
-                onChange={(e) => setCategory(e.target.value)}
+                checked={categories.includes("bagel")}
+                onChange={(e) => handleCategoryChange(e.target.value)}
               />
               Bagels
             </label>
@@ -83,8 +102,8 @@ function ProductPage() {
               <input
                 type="checkbox"
                 value="sandwich"
-                checked={category === "sandwich"}
-                onChange={(e) => setCategory(e.target.value)}
+                checked={categories.includes("sandwich")}
+                onChange={(e) => handleCategoryChange(e.target.value)}
               />
               Sandwiches
             </label>
@@ -93,12 +112,15 @@ function ProductPage() {
               <input
                 type="checkbox"
                 value="spread"
-                checked={category === "spread"}
-                onChange={(e) => setCategory(e.target.value)}
+                checked={categories.includes("spread")}
+                onChange={(e) => handleCategoryChange(e.target.value)}
               />
               Spreads
             </label>
           </fieldset>
+
+          <button className="product-page__filters--clear" onClick={clearFilters}>Clear Filters</button>
+
         </div>
       </div>
       <section className="product-page__product-sec">

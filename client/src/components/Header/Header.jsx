@@ -31,7 +31,7 @@ function Header() {
           id='close-btn'
         />
         <Link className='header-nav__product-btn' to={'/shop'}>Shop Bagels</Link>
-        <Link className='header-nav__product-btn' to={'/contact'}>Contact Us</Link>
+        <Link className='header-nav__contact-btn' to={'/contact'}>Contact Us</Link>
       </nav>
     </header>
   )
