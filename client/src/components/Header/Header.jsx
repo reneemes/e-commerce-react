@@ -2,28 +2,11 @@ import './Header.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  // const navRef = useRef(null);
   const closeNav = () => setIsOpen(false);
-
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (navRef.current && !navRef.current.contains(e.target)) {
-        closeNav();
-      }
-    }
-
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isOpen]);
 
   return (
     <header className='header'>
