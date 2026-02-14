@@ -1,0 +1,85 @@
+@use '../../styles/variables' as vars;
+
+.product-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    color: vars.$dark-brown;
+  }
+
+  &__filters {
+    color: vars.$dark-brown;
+
+    &--title {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    &--slider {
+      display: flex;
+      align-items: center
+    }
+
+    &--types {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &--clear {
+      @include vars.btn;
+      padding: 3px;
+      font-size: 1.1rem;
+      width: 50%;
+    }
+
+    span {
+      margin-left: 1.1em;
+      margin-right: 1em;
+    }
+  }
+
+  fieldset {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  &__product-sec {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    max-width: 1546px;
+    margin: 30px 0;
+    margin: 20px auto 50px;
+  }
+}
+
+// Media Queries
+@media screen and (min-width: 768px) {
+  #hamburger-icon {
+    display: none;
+  }
+
+  .nav--desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header {
+    &__home-btn,
+    &__contact-btn {
+      @include vars.btn;
+      margin: 0 5px;
+    }
+  }
+
+}
+
+@media screen and (min-width: 1024px) {
+  .product-sec {
+    justify-content: flex-start;
+    max-width: 1600px;
+  }
+}

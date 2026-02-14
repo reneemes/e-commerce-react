@@ -1,4 +1,5 @@
 $primary-color: #b08968;
+// $secondary-color: #63412C;
 $secondary-color: #7f5539;
 $light-brown: #ede0d4;
 $dark-brown: #432818;
@@ -16,5 +17,17 @@ $dark-brown: #432818;
   &:hover {
     background-color: $light-brown;
     color: $dark-brown;
+  }
+}
+
+@mixin input-box {
+  font-family: 'Courier New', Courier, monospace;
+  border: none;
+  border-radius: 10px;
+  padding: 8px;
+  width: 300px;
+
+  &:focus {
+    outline-color: $secondary-color;
   }
 }
