@@ -6,11 +6,13 @@ function ProductPage() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [maxPrice, setMaxPrice] = useState(10);
+  
+  const API = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('/api/v1/products');
+        const response = await fetch(`${API}/api/v1/products`);
         const data = await response.json();
         setProducts(data.products);
       } catch (e) {

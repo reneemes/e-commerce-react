@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require("express");
+const cors = require('cors');
 
 // DB Routes
 const productRoutes = require('./routes/products.js');
@@ -11,6 +12,11 @@ const app = express();
 // Parse incoming JSON & form data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cors({
+  origin: process.env.FRONTEND_URL || '*',
+  credentials: true,
+}));
 
 app.use('/api/v1/products', productRoutes);
 
