@@ -1,6 +1,22 @@
+import { useState } from 'react';
 import './Contact.scss';
 
 function Contact() {
+  const [charCount, setCharCount] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [formName, setFormName] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setModalOpen(true);
+
+    e.target.reset();
+    setCharCount(0);
+  }
+
+  const closeModal = () => {
+    setModalOpen(false);
+  }
 
   return (
     <div className='contact'>
@@ -16,9 +32,16 @@ function Contact() {
 
       <section className='contact-sec'>
         <h1 className='contact-sec__title'>Contact Us</h1>
-        <form className='contact-form' id='contact-form' method='post'>
+        <form className='contact-form' id='contact-form' onSubmit={handleSubmit}>
           <label htmlFor='name' className='contact-form__label contact-form__label--required'>Name</label>
-          <input type='text' name='name' id='name' required/>
+          <input 
+            type='text' 
+            name='name' 
+            id='name' 
+            placeholder='Full Name' 
+            onChange={(e) => setFormName(e.target.value)}
+            required
+          />
 
           <label htmlFor='reason' className='contact-form__label contact-form__label--required'>Reason</label>
           <select name='reason' id='reason'>
@@ -38,16 +61,38 @@ function Contact() {
             required />
 
           <label htmlFor='comment-box' className='contact-form__label contact-form__label--required'>Comments</label>
-          <textarea name='comments' maxLength='500' placeholder='Tell us what’s on your mind. (max 500 characters)' id='comment-box'></textarea>
-          <p id='character-output'></p>
+          <textarea 
+            name='comments' 
+            maxLength='500' 
+            placeholder='Tell us what’s on your mind. (max 500 characters)' 
+            id='comment-box'
+            onChange={(e) => setCharCount(e.target.value.length)}
+            required
+          />
+          <p id='character-output'>{charCount}/500</p>
 
-          <p className='error-message'></p>
-          <button className='submit-btn contact-form__submit-btn' type='submit' id='submit-btn'>Submit</button>
+          <button 
+            className='submit-btn contact-form__submit-btn' 
+            type='submit' 
+            id='submit-btn'
+          >Submit</button>
         </form>
       </section>
       <div className='response-msg'>
         <p className='response-msg__txt'>We aim to respond to all messages within 48 hours, Monday–Friday.</p>
-        <p className='response-msg__txt'>No bots. No autoresponder. Just real humans who care deeply about bagels.</p>
+        <p className='response-msg__txt'>No bots. No auto-responder. Just real humans who care deeply about bagels.</p>
+      </div>
+
+      {/* Modal */}
+      <div className={`modal ${!modalOpen ? 'hidden' : ''}`}>
+        <div className='modal__overlay' onClick={closeModal}>
+          <div className='modal__content'>
+            <button className="modal__close-btn" aria-label="Close" onClick={closeModal}>&times;</button>
+            <p>Thank you {formName} for your message!</p>
+            <p>We aim to respond to all messages within 48 hours, Monday–Friday.</p>
+            <p>No bots. No auto-responder. Just real humans who care deeply about bagels.</p>
+          </div>
+        </div>
       </div>
     </div>
   )

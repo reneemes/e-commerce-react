@@ -7,10 +7,10 @@ function Footer() {
   return (
     <footer className='footer'>
       <div className='footer__socials'>
-        <a href='https://www.instagram.com/accounts/login/?hl=en'>
+        <a href='https://www.instagram.com/accounts/login/?hl=en' aria-label="Instagram">
           <FontAwesomeIcon icon={faInstagram} size='2xl' style={{color: '#432818',}}/>
         </a>
-        <a href='https://www.facebook.com/login/'>
+        <a href='https://www.facebook.com/login/' aria-label="Facebook">
           <FontAwesomeIcon icon={faSquareFacebook} size='2xl' style={{color: '#432818',}}/>
         </a>
       </div>

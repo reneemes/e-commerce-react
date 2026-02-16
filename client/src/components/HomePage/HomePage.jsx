@@ -1,6 +1,5 @@
 import './HomePage.scss';
 import '@splidejs/splide/dist/css/splide.min.css';
-// import '@splidejs/splide/dist/css/themes/splide-skyblue.min.css';
 import { Link } from 'react-router-dom';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 

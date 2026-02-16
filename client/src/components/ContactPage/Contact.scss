@@ -36,7 +36,7 @@
     font-size: 1.25rem;
 
     &--required:after {
-      content: " *";
+      content: "*";
       color: firebrick;
     }
   }
@@ -71,6 +71,48 @@
   }
 }
 
+.modal.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+    position: relative;
+    max-width: 600px;
+    margin: 30vh auto;
+    padding: 1.5rem;
+    background: white;
+
+    p {
+      text-align: center;
+    }
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .contact-intro,
   .response-msg {
@@ -91,5 +133,13 @@
 @media screen and (min-width: 1024px) {
   .contact-sec {
     max-width: 600px;
+  }
+
+  .contact-form {
+    input,
+    textarea,
+    select {
+      width: 400px;
+    }
   }
 }
