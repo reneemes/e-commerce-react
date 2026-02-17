@@ -1,16 +1,49 @@
-# React + Vite
+# Bagel Bites
+<img src="client/public/assets/bagel-bites-mobile.png" alt="bagel bites homepage" height="500px">
+<img src="client/public/assets/bagel-bites-mobile2.png" alt="bagel bites homepage" height="500px">
+<img src="client/public/assets/bagel-bites-mobile3.png" alt="bagel bites homepage" height="500px">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Bagel Bites](https://e-commerce-react-psi-three.vercel.app/)
+## Description
 
-Currently, two official plugins are available:
+This is a full-stack e-commerce application built with React (Vite) for the frontend and Node.js/Express for the backend. It features a product catalog with dynamic filtering, a contact form with validation, and fully responsive design for desktop, tablet, and mobile.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
+### Installing
+```
+Fork and clone the repo
+```
+### Executing Program - Server
+```
+# cd into the application directory
+cd server
 
-## React Compiler
+# Install Dependencies
+npm install
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Create a .env file with your database and environment variables:
+DB_HOST=your-db-host
+DB_USER=your-db-user
+DB_PASSWORD=your-db-password
+DB_NAME=your-db-name
+FRONTEND_URL=https://your-frontend-url
 
-## Expanding the ESLint configuration
+# Start backend locally
+npm run dev
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+### Executing Program - Client
+```
+# Navigate to the client folder:
+cd client
+
+# Install Dependencies
+npm install
+
+# Create a .env file with your API URL:
+VITE_API_URL=http://localhost:5000
+
+# Start frontend locally
+npm run dev
+
+```
