@@ -8,7 +8,6 @@ function ProductCard({ id, img, name, price, description, type}) {
       <h2>{name}</h2>
       <p>${price}</p>
       <p>{description}</p>
-      {/* <p>{type}</p> */}
     </div>
   )
 }

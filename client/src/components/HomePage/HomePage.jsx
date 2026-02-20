@@ -7,8 +7,6 @@ function HomePage() {
 
   return (
     <div className='main-body'>
-
-
       <div className='main-body__hero'>
 
         <Splide
