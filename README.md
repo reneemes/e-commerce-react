@@ -1,8 +1,9 @@
 # Bagel Bites
-<img src="client/public/assets/bagel-bites-mobile.png" alt="bagel bites homepage" height="500px">
-<img src="client/public/assets/bagel-bites-mobile2.png" alt="bagel bites homepage" height="500px">
-<img src="client/public/assets/bagel-bites-mobile3.png" alt="bagel bites homepage" height="500px">
+<img src="client/public/assets/bagel-bites-mobile.png" alt="bagel bites homepage" height="300px">
+<img src="client/public/assets/bagel-bites-mobile2.png" alt="bagel bites homepage" height="300px">
+<img src="client/public/assets/bagel-bites-mobile3.png" alt="bagel bites homepage" height="300px">
 
+## Live Website
 [Bagel Bites](https://e-commerce-react-psi-three.vercel.app/)
 ## Description
 
